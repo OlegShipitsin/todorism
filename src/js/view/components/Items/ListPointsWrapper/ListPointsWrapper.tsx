@@ -60,9 +60,9 @@ export const ListPointsWrapper = <T,>(props: IListPointsWrapperProps<T>) => {
     listPoint,
   }: {
     grouped: TGroupedListPoints<T>;
-    listPoint: IListPoint | ITakenListPoint;
+    listPoint: ITakenListPoint | IListPoint;
   }) => {
-    const key = listPoint.point
+    const key = 'point' in listPoint
       ? listPoint.point.item.tags[0]
       : listPoint.item.tags[0];
     const list = grouped[key];
@@ -82,12 +82,12 @@ export const ListPointsWrapper = <T,>(props: IListPointsWrapperProps<T>) => {
           filteredListPoints: IListPoint[] | ITakenListPoint[],
           listPoint: IListPoint | ITakenListPoint
         ) => {
-          const itemName = listPoint.point
+          const itemName = 'point' in listPoint
             ? listPoint.point.item.name.toLowerCase()
             : listPoint.item.name.toLowerCase();
 
           if (itemName.indexOf(value.toLowerCase()) !== -1) {
-            filteredListPoints.push(listPoint);
+            filteredListPoints.push(listPoint as any);
             grouped = updateGroupedListPoints({ grouped, listPoint });
           }
 
@@ -106,7 +106,7 @@ export const ListPointsWrapper = <T,>(props: IListPointsWrapperProps<T>) => {
   ) => {
     let grouped: TGroupedListPoints<T> = {};
     list.forEach((lp) => {
-      grouped = updateGroupedListPoints({ grouped, listPoint: lp });
+      updateGroupedListPoints({ grouped, listPoint: lp });
     });
     setGroupedListPoints(grouped);
     setGroupedListPointsAfterFilter(grouped);

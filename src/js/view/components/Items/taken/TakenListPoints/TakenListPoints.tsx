@@ -72,10 +72,11 @@ export const TakenListPoints = (props: ITakenListPointsProps) => {
 
   return (
     <ListPointsWrapper
-      listPoints={listPoints}
+      listPoints={listPoints.map(x => x.point)}
       listPointItem={listPointItem}
       customActionPanel={<div />}
       disableCategoryAddButton
+      onCreateListPoint={() =>{}}
     />
   );
 };

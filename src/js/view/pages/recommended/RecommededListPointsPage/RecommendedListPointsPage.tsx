@@ -111,6 +111,7 @@ export const RecommendedListPointsPage = () => {
         listPointItem={listPointItem}
         title={title}
         customActionPanel={footer}
+        onCreateListPoint={() =>{}}
       />
 
       {modalContent && (

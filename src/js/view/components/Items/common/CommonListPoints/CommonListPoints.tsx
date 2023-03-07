@@ -21,6 +21,7 @@ import {
   ICommonListPointFromBE,
   IListPoint,
   IListPointBindingFromBE,
+  LIST_POINT_CATEGORIES,
 } from "../../../../../interfaces";
 import {
   Modal,
@@ -81,11 +82,13 @@ export const CommonListPoints = (props: ICommonListPointsProps) => {
   const getEmptyListPointWithCurrentCategory = (category: string) => {
     const emptyListPoint = getEmptyListPoint();
 
+    let categoryAsEnum = LIST_POINT_CATEGORIES[category as keyof typeof LIST_POINT_CATEGORIES]
+
     return {
       ...emptyListPoint,
       item: {
         ...emptyListPoint.item,
-        tags: [category],
+        tags: [categoryAsEnum],
       },
     };
   };
@@ -308,8 +311,7 @@ export const CommonListPoints = (props: ICommonListPointsProps) => {
         listPoints={listPoints}
         listPointItem={listPointItem}
         onCreateListPoint={(category) => {
-          let emptyListPoint;
-
+          let emptyListPoint  = undefined;
           if (category) {
             emptyListPoint = getEmptyListPointWithCurrentCategory(category);
           }

@@ -38,7 +38,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "cross-env PORT=8080 react-scripts start",
+    "start": "react-scripts start",
+    "start_dev": "cross-env PORT=8080 react-scripts start",
     "build": "cross-env DISABLE_ESLINT_PLUGIN=true TSC_COMPILE_ON_ERROR=true react-scripts build",
     "format": "prettier --write src/**/*.{ts,tsx}",
     "lint": "eslint --fix src/**/*.{ts,tsx}",

@@ -2,6 +2,9 @@
   "name": "todorism",
   "version": "0.2.0",
   "private": true,
+  "engines": {
+    "node": "18.x"
+  },
   "description": "Super simple todo list before hiking or camping",
   "author": "SlimCandy",
   "keywords": [
